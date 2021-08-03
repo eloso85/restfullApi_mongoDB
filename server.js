@@ -3,9 +3,9 @@ const app = express();
 const mongoose = require('mongoose')
 
 //routes
-const subscriberRouter = require('./routes/subscribers');
 
-app.use('/subscribers', subscriberRouter)
+
+
 
 require('dotenv').config()
 
@@ -25,5 +25,8 @@ db.on('error',(error) => console.error(error))
 db.once('open', ()=> console.log('connected to database'))
 
 app.use(express.json())
+
+const subscriberRouter = require('./routes/subscribers');
+app.use('/subscribers', subscriberRouter)
 
 app.listen(3000, ()=>console.log(' server started '))
